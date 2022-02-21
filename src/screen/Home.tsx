@@ -1,4 +1,4 @@
-import { View, FlatList, SafeAreaView, StatusBar } from 'react-native'
+import { KeyboardAvoidingView, FlatList, SafeAreaView, StatusBar, Platform } from 'react-native'
 import React from 'react'
 
 import BottomOption from './../components/BottomOption'
@@ -11,15 +11,21 @@ const Home = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <StatusBar barStyle={'light-content'} />
       <Header />
-      <FlatList
-        contentContainerStyle={{ paddingBottom: 100 }}
-        data={data.result}
-        inverted={true}
-        renderItem={({ item, index }) => <Content {...item} />}
-        keyExtractor={(item, index) => index.toString()}
-        // onEndReached={getChatLog}
-        onEndReachedThreshold={0.2} />
-      <BottomOption />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior='padding'
+        keyboardVerticalOffset={Platform.OS === 'android' ? -335 : 50}
+      >
+        <FlatList
+          contentContainerStyle={{ padding: 16 }}
+          data={data.result}
+          inverted={true}
+          renderItem={({ item, index }) => <Content {...item} />}
+          keyExtractor={(item, index) => index.toString()}
+          // onEndReached={getChatLog}
+          onEndReachedThreshold={0.2} />
+        <BottomOption />
+      </KeyboardAvoidingView>
     </SafeAreaView>
   )
 }

@@ -5,11 +5,10 @@ import { COLORS, FONT_SIZE } from '../../utils/styleGlobal'
 
 const { width } = Dimensions.get('window')
 
-const LineChat = ({ content }: any) => {
-    let is_user = false
+const LineChat = ({ content, is_mainuser }: any) => {
     return (
-        <View style={[styles.lineChatContain, { alignSelf: is_user ? 'flex-start' : 'flex-end' }]}>
-            <Text style={styles.lineChatText}>{content}</Text>
+        <View style={[styles.lineChatContain, { alignSelf: is_mainuser ? 'flex-start' : 'flex-end' }]}>
+            <Text style={[styles.lineChatText, is_mainuser ?? { color: "#694feb" }]}>{content}</Text>
         </View>
     )
 }
@@ -24,13 +23,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.PLACEHOLDER_TEXT_COLOR
     },
     lineChatText: {
-        // color: COLORS.WHITE,
-        color: "#f6f6f6",
+        color: COLORS.WHITE,
         fontSize: FONT_SIZE.CONTENT
     },
-
-
-
 })
 
 export default LineChat

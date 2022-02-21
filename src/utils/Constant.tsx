@@ -11,10 +11,32 @@ export const data = {
             username: "Quang",
             avatar: "",
             message: [
-                { value: "@Quảng Văn anh ơi anh hỏi xem có thể thức chọn bên không ạ" },
-                { value: "thường thường team top cao hơn vòng bảng được chọn bên trận đầu rồi team thua ván trước được chọn bên ván sau" },
+                { value: "em nghĩ là có người sẽ chọn ire" },
+                { value: "em thấy ire đánh hay mà" },
             ]
-
+        },
+        {
+            avatar: "",
+            username: "Bac",
+            message: [{ value: "uh, bên kia k thấy ai đánh ire" }]
+        },
+        {
+            avatar: "",
+            username: "Quang",
+            message: [
+                { value: "bên kia có ai đánh được ire đâu" },
+                { value: "với cả e thấy ire không khoẻ đến thế đâu" }
+            ]
+        },
+        {
+            avatar: "",
+            username: "Thành",
+            message: [{ value: "Ire là rõ ae ơi =))" }]
+        },
+        {
+            avatar: "",
+            username: "Quang",
+            message: [{ value: "Vayne SeraPhine +1 thì sao ạ" }]
         },
         {
             time: "SEP 7 AT 10:51 AM",
@@ -26,26 +48,12 @@ export const data = {
             ]
         },
         {
-            avatar: "",
             username: "Quang",
-            message: [{ value: "Vayne SeraPhine +1 thì sao ạ" }]
-        },
-        {
             avatar: "",
-            username: "Thành",
-            message: [{ value: "Ire là rõ ae ơi =))" }]
-        }, {
-            avatar: "",
-            username: "Quang",
             message: [
-                { value: "bên kia có ai đánh được ire đâu" },
-                { value: "với cả e thấy ire không khoẻ đến thế đâu" }
+                { value: "@Quảng Văn anh ơi anh hỏi xem có thể thức chọn bên không ạ" },
+                { value: "thường thường team top cao hơn vòng bảng được chọn bên trận đầu rồi team thua ván trước được chọn bên ván sau" },
             ]
         },
-        {
-            avatar: "",
-            username: "Bac",
-            message: [{ value: "uh, bên kia k thấy ai đánh ire" }]
-        }
     ]
 }

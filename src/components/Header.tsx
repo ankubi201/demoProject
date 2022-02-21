@@ -5,6 +5,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { COLORS, FONT_SIZE } from '../utils/styleGlobal'
 import Avatar from '../components/Avatar'
 
+interface OptionProps {
+    roomName: string,
+    onPressCall: void,
+    onPressVideoCall: void,
+    onPressInformation: void
+}
+
 const OptionButton = () => {
     return (
         <View style={styles.viewButtonOption}>
@@ -26,12 +33,12 @@ const Title = () => {
     return (
         <TouchableOpacity style={styles.viewTitle} activeOpacity={0.8}>
             <Avatar style={styles.avatar} dotStyle={styles.status} />
-            <Text style={styles.title}>Team 3 - Tốc Chiến</Text>
+            <Text style={styles.title}>{"roomName"}</Text>
         </TouchableOpacity>
     )
 }
 
-const Header = () => {
+const Header = (props: OptionProps) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity>

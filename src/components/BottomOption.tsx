@@ -29,7 +29,7 @@ const BottomOption = () => {
         <View style={styles.container}>
             <OptionButtonView />
             <View style={styles.inputViewContainer}>
-                <TextInput style={styles.textInput} placeholder={"Aa"} placeholderTextColor={"#989898"}/>
+                <TextInput style={styles.textInput} placeholder={"Aa"} placeholderTextColor={"#989898"} />
                 <TouchableOpacity style={{ flex: 1 }}>
                     <Icon name="happy" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
                 </TouchableOpacity>
@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
     textInput: {
         height: 40,
         flex: 7,
-        marginRight: 5
+        marginRight: 5,
+        color: COLORS.WHITE
     },
     iconView: {
         flex: 1,

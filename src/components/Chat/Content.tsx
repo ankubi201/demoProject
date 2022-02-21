@@ -3,15 +3,16 @@ import React from 'react'
 
 import LineChat from './LineChat'
 import Avatar from '../Avatar'
-import { data, me } from './../../utils/Constant'
+import { me } from './../../utils/Constant'
 import { COLORS } from '../../utils/styleGlobal'
 
 const Content = (item: any) => {
+    const is_mainuser = item?.username !== me.username
     return (
-        <View style={styles.container}>
-            <Text style={styles.textTime}>{item?.time}</Text>
+        <View >
+            {item?.time ? <Text style={styles.textTime}>{item?.time}</Text> : null}
             {
-                item?.username !== me.username ?
+                is_mainuser ?
                     <View style={styles.chatItem}>
                         <View style={{ justifyContent: "flex-end" }}>
                             <Avatar style={styles.avatar} dotStyle={styles.dot} />
@@ -19,13 +20,13 @@ const Content = (item: any) => {
                         <View style={{ marginLeft: 8 }}>
                             <Text style={styles.textName}>{item?.username}</Text>
                             {item?.message?.map((item: any) =>
-                                <LineChat content={item.value} />
+                                <LineChat content={item.value} is_mainuser={is_mainuser} />
                             )}
                         </View>
                     </View>
                     :
                     item?.message?.map((item: any) =>
-                        <LineChat content={item.value} />
+                        <LineChat content={item.value} is_mainuser={is_mainuser} />
                     )
             }
         </View>
@@ -33,12 +34,13 @@ const Content = (item: any) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 16
-    },
+    // container: {
+    //     // paddingHorizontal: 16,
+    // },
     textTime: {
         textAlign: "center",
-        marginBottom: 12
+        marginBottom: 12,
+        color: COLORS.BORDER_BOTTOM_COLOR
     },
     chatItem: {
         flexDirection: "row",

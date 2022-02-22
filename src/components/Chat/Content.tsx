@@ -6,37 +6,46 @@ import Avatar from '../Avatar'
 import { me } from './../../utils/Constant'
 import { COLORS } from '../../utils/styleGlobal'
 
-const Content = (item: any) => {
-    const is_mainuser = item?.username !== me.username
+interface ContentProps {
+    username: string
+    online: boolean
+    message: { value: string }[]
+    avatar: string
+    time?: string
+}
+
+const Content = (item: ContentProps) => {
+    const is_mainuser = item?.username == me.username
     return (
         <View >
             {item?.time ? <Text style={styles.textTime}>{item?.time}</Text> : null}
             {
                 is_mainuser ?
+                    item?.message?.map((item: any) =>
+                        <LineChat content={item.value} style={styles.lineMainColor} />)
+                    :
                     <View style={styles.chatItem}>
                         <View style={{ justifyContent: "flex-end" }}>
-                            <Avatar style={styles.avatar} dotStyle={styles.dot} />
+                            <Avatar
+                                style={styles.avatar}
+                                dotStyle={styles.dot}
+                                status={item.online}
+                                avatarURL={item.avatar}
+                            />
                         </View>
                         <View style={{ marginLeft: 8 }}>
                             <Text style={styles.textName}>{item?.username}</Text>
                             {item?.message?.map((item: any) =>
-                                <LineChat content={item.value} is_mainuser={is_mainuser} />
+                                <LineChat content={item.value} style={styles.lineColor} />
                             )}
                         </View>
                     </View>
-                    :
-                    item?.message?.map((item: any) =>
-                        <LineChat content={item.value} is_mainuser={is_mainuser} />
-                    )
             }
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    // container: {
-    //     // paddingHorizontal: 16,
-    // },
     textTime: {
         textAlign: "center",
         marginBottom: 12,
@@ -60,5 +69,13 @@ const styles = StyleSheet.create({
         right: 0,
         position: "absolute"
     },
+    lineColor: {
+        backgroundColor: COLORS.PLACEHOLDER_TEXT_COLOR,
+        alignSelf: "flex-start"
+    },
+    lineMainColor: {
+        backgroundColor: COLORS.BLUR_PURPLE,
+        alignSelf: "flex-end"
+    }
 })
 export default Content

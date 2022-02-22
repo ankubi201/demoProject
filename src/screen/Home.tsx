@@ -7,10 +7,20 @@ import Content from './../components/Chat/Content'
 import { data } from '../utils/Constant'
 
 const Home = () => {
+  const onPress = () => {
+
+  }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <StatusBar barStyle={'light-content'} />
-      <Header />
+      <Header
+        roomName={data.roomName}
+        roomAvatarURL={data.roomAvatar}
+        status={data.online}
+        onPressCall={() => onPress}
+        onPressVideoCall={() => onPress}
+        onPressInformation={() => onPress}
+      />
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior='padding'
@@ -24,7 +34,15 @@ const Home = () => {
           keyExtractor={(item, index) => index.toString()}
           // onEndReached={getChatLog}
           onEndReachedThreshold={0.2} />
-        <BottomOption />
+        <BottomOption
+          onPressMore={() => onPress}
+          onPressCamera={() => onPress}
+          onPressImage={() => onPress}
+          onPressRecord={() => onPress}
+          onPressIcon={() => onPress}
+          onPressSticker={() => onPress}
+          onChangeText={() => onPress}
+        />
       </KeyboardAvoidingView>
     </SafeAreaView>
   )

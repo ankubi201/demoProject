@@ -9,10 +9,11 @@ export const COLORS = {
     ORANGE: '#ffa938',
     GREEN: '#79d93e',
     BLUE: '#047AFF',
-    WHITE:'#fff',
-    COLOR_LIGHT_BLUE:'#3DBBED',
+    WHITE: '#fff',
+    COLOR_LIGHT_BLUE: '#3DBBED',
     GREY: "#3a3a3a",
-    PURPLE:"#a337ed"
+    PURPLE: "#a337ed",
+    BLUR_PURPLE: '#694feb'
 }
 
 export const FONT_SIZE = {

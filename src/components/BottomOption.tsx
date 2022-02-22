@@ -5,36 +5,58 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconAntDesign from 'react-native-vector-icons/AntDesign';
 import { COLORS, FONT_SIZE } from '../utils/styleGlobal'
 
-const OptionButtonView = () => {
+interface BottomOption {
+    onPressMore: () => {}
+    onPressCamera: () => {}
+    onPressImage: () => {}
+    onPressRecord: () => {}
+    onPressSticker: () => {}
+    onPressIcon: () => {}
+    onChangeText: () => {}
+}
+
+interface ButtonOption {
+    onPressMore: () => {}
+    onPressCamera: () => {}
+    onPressImage: () => {}
+    onPressRecord: () => {}
+}
+
+const OptionButtonView = (props: ButtonOption) => {
     return (
         <View style={styles.buttonViewContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.onPressMore}>
                 <Icon name="apps" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.onPressCamera}>
                 <Icon name="camera" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.onPressImage}>
                 <Icon name="md-image-sharp" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={props.onPressRecord}>
                 <Icon name="mic" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
             </TouchableOpacity>
         </View>
     )
 }
 
-const BottomOption = () => {
+const BottomOption = (props: BottomOption) => {
     return (
         <View style={styles.container}>
-            <OptionButtonView />
+            <OptionButtonView
+                onPressMore={props.onPressMore}
+                onPressCamera={props.onPressCamera}
+                onPressImage={props.onPressImage}
+                onPressRecord={props.onPressRecord}
+            />
             <View style={styles.inputViewContainer}>
-                <TextInput style={styles.textInput} placeholder={"Aa"} placeholderTextColor={"#989898"} />
-                <TouchableOpacity style={{ flex: 1 }}>
+                <TextInput style={styles.textInput} placeholder={"Aa"} placeholderTextColor={"#989898"} onChangeText={props.onChangeText} />
+                <TouchableOpacity style={{ flex: 1 }} onPress={props.onPressSticker}>
                     <Icon name="happy" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.iconView}>
+            <TouchableOpacity style={styles.iconView} onPress={props.onPressIcon}>
                 <IconAntDesign name="like1" size={FONT_SIZE.HEADER} color={COLORS.PRIMARY_COLOR} />
             </TouchableOpacity>
         </View>

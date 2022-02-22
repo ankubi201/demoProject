@@ -1,16 +1,22 @@
-import { View, Text, Image, StyleSheet, ImageStyle, FlexStyle } from 'react-native'
+import { View, Image, StyleSheet, ImageStyle, ViewStyle } from 'react-native'
 import React from 'react'
 
-import { COLORS, FONT_SIZE } from '../utils/styleGlobal'
+import { COLORS } from '../utils/styleGlobal'
 
-const Avatar = ({ style, dotStyle }: any) => {
+interface AvatarProps {
+    avatarURL: string
+    style: ImageStyle
+    dotStyle: ViewStyle
+    status: Boolean
+}
+const Avatar = (props: AvatarProps) => {
     return (
         <View >
             <Image
-                source={{ uri: 'https://i.pinimg.com/564x/44/15/ba/4415ba5df0f4bfcee5893d6c441577e0.jpg' }}
-                style={style}
+                source={{ uri: props.avatarURL }}
+                style={props.style}
             />
-            <View style={[dotStyle, styles.dot]}></View>
+            {props.status ? <View style={[props.dotStyle, styles.dot]}></View> : null}
         </View>
     )
 }
